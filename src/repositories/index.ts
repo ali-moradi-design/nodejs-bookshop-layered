@@ -1,0 +1,11 @@
+export { BookRepository } from '@repositories/BookRepository';
+export { UserRepository } from '@repositories/UserRepository';
+export { OrderRepository } from '@repositories/OrderRepository';
+export { ReviewRepository } from '@repositories/ReviewRepository';
+export { PermissionRepository } from '@repositories/PermissionRepository';
+export { RoleRepository } from '@repositories/RoleRepository';
+export { RefreshTokenRepository } from '@repositories/RefreshTokenRepository';
+export { IssueReportRepository } from '@repositories/IssueReportRepository';
+export { CartRepository } from '@repositories/CartRepository';
+export { FavoriteRepository } from '@repositories/FavoriteRepository';
+export { DiscountRepository } from '@repositories/DiscountRepository';

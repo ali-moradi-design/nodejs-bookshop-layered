@@ -1,0 +1,12 @@
+node_modules/
+dist/
+.env
+coverage/
+*.log
+.DS_Store
+.vscode/
+.idea/
+*.tsbuildinfo
+.eslintcache
+uploads/
+!uploads/.gitkeep
