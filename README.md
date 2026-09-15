@@ -29,7 +29,7 @@ Flow: **controllers → services → repositories → models**. Details: [docs/a
 
 ## Stack
 
-- Express 5, Mongoose, Zod, Helmet, express-rate-limit, multer
+- Express 5, Mongoose, Zod, Helmet, express-rate-limit, multer, cookie-parser
 - bcryptjs, jsonwebtoken, dotenv, cors, morgan
 - swagger-ui-express (`/api/docs`)
 - ESLint + Prettier, tsx, tsc-alias
@@ -84,7 +84,39 @@ docker run --rm -p 4000:4000 --env-file .env nodejs-bookshop-layered
 
 ### `/api/v1`
 
-- **Auth:** register, login, refresh, logout
+- **Auth:** register, login, refresh, logout (JSON tokens + httpOnly cookies; Bearer or cookie)
+
+### Cookie auth (Next.js / browsers)
+
+Register / login / refresh return tokens in JSON **and** set httpOnly cookies (`accessToken`, `refreshToken`). Protected routes accept `Authorization: Bearer <token>` first, otherwise the `accessToken` cookie. Refresh/logout accept body **or** `refreshToken` cookie.
+
+CORS is `credentials: true`. Set `CORS_ORIGIN` to the frontend origin (e.g. `http://localhost:3000`). Do **not** use `*` in production with credentials.
+
+```ts
+const API = 'http://localhost:4000';
+
+await fetch(`${API}/api/v1/auth/login`, {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  credentials: 'include',
+  body: JSON.stringify({ email, password }),
+});
+
+const me = await fetch(`${API}/api/v1/users/me`, { credentials: 'include' });
+
+await fetch(`${API}/api/v1/auth/refresh`, {
+  method: 'POST',
+  credentials: 'include',
+});
+
+await fetch(`${API}/api/v1/auth/logout`, {
+  method: 'POST',
+  credentials: 'include',
+});
+```
+
+Cookie flags: `httpOnly`, `path=/`, `secure` from `COOKIE_SECURE` (default true in production), `sameSite` from `COOKIE_SAME_SITE` (default `lax`). Optional `COOKIE_DOMAIN`.
+
 - **Books:** CRUD, list/search, featured
 - **Cart / Orders / Favorites / Discounts / Reviews**
 - **RBAC:** roles, permissions
