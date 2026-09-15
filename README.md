@@ -90,7 +90,7 @@ docker run --rm -p 4000:4000 --env-file .env nodejs-bookshop-layered
 
 Register / login / refresh return tokens in JSON **and** set httpOnly cookies (`accessToken`, `refreshToken`). Protected routes accept `Authorization: Bearer <token>` first, otherwise the `accessToken` cookie. Refresh/logout accept body **or** `refreshToken` cookie.
 
-CORS is `credentials: true`. Set `CORS_ORIGIN` to the frontend origin (e.g. `http://localhost:3000`). Do **not** use `*` in production with credentials.
+CORS is `credentials: true`. Set `CORS_ORIGIN` to the frontend origin (e.g. `http://localhost:5173`). Do **not** use `*` in production with credentials.
 
 ```ts
 const API = 'http://localhost:4000';
