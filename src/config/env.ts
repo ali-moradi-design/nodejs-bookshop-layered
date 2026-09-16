@@ -31,6 +31,21 @@ const envSchema = z.object({
       const trimmed = v?.trim();
       return trimmed ? trimmed : undefined;
     }),
+  VAPID_PUBLIC_KEY: z
+    .string()
+    .optional()
+    .transform((v) => {
+      const trimmed = v?.trim();
+      return trimmed ? trimmed : undefined;
+    }),
+  VAPID_PRIVATE_KEY: z
+    .string()
+    .optional()
+    .transform((v) => {
+      const trimmed = v?.trim();
+      return trimmed ? trimmed : undefined;
+    }),
+  VAPID_SUBJECT: z.string().default('mailto:admin@bookstore.local'),
 });
 
 const parsed = envSchema.safeParse(process.env);

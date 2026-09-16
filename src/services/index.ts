@@ -11,3 +11,4 @@ export { ReportService } from '@services/report.service';
 export { ReviewService } from '@services/review.service';
 export { UserService } from '@services/user.service';
 export { DashboardService } from '@services/dashboard.service';
+export { PushService } from '@services/push.service';

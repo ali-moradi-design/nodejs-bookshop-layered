@@ -9,6 +9,7 @@ import type { RefreshTokenRecord } from '@app-types/auth';
 import type { Cart } from '@app-types/cart';
 import type { Favorite } from '@app-types/favorite';
 import type { Discount } from '@app-types/discount';
+import type { PushSubscriptionRecord } from '@app-types/push';
 
 function idOf(doc: { id?: string; _id?: { toString(): string } }): string {
   return doc.id ?? doc._id!.toString();
@@ -399,6 +400,30 @@ export function mapDiscount(doc: {
     endsAt: doc.endsAt,
     isActive: doc.isActive,
     deletedAt: doc.deletedAt,
+    createdAt: doc.createdAt,
+    updatedAt: doc.updatedAt,
+  };
+}
+
+export function mapPushSubscription(doc: {
+  id?: string;
+  _id?: { toString(): string };
+  userId: { toString(): string };
+  endpoint: string;
+  keys: { p256dh: string; auth: string };
+  userAgent?: string;
+  createdAt: Date;
+  updatedAt: Date;
+}): PushSubscriptionRecord {
+  return {
+    id: idOf(doc),
+    userId: doc.userId.toString(),
+    endpoint: doc.endpoint,
+    keys: {
+      p256dh: doc.keys.p256dh,
+      auth: doc.keys.auth,
+    },
+    userAgent: doc.userAgent,
     createdAt: doc.createdAt,
     updatedAt: doc.updatedAt,
   };

@@ -125,3 +125,14 @@ Cookie flags: `httpOnly`, `path=/`, `secure` from `COOKIE_SECURE` (default true 
 ## License
 
 MIT
+
+## Web Push
+
+See [docs/push-notifications.md](docs/push-notifications.md).
+
+```bash
+npx web-push generate-vapid-keys
+# set VAPID_PUBLIC_KEY, VAPID_PRIVATE_KEY, VAPID_SUBJECT in .env
+```
+
+Endpoints: `GET /api/v1/push/vapid-public-key`, `POST|DELETE /api/v1/push/subscribe`, `POST /api/v1/push/test`, `POST /api/v1/admin/push/broadcast`.

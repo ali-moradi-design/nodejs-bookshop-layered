@@ -10,6 +10,7 @@ import {
   CartRepository,
   FavoriteRepository,
   DiscountRepository,
+  PushSubscriptionRepository,
 } from '@repositories/index';
 
 export const bookRepo = new BookRepository();
@@ -23,6 +24,7 @@ export const issueRepo = new IssueReportRepository();
 export const cartRepo = new CartRepository();
 export const favoriteRepo = new FavoriteRepository();
 export const discountRepo = new DiscountRepository();
+export const pushSubscriptionRepo = new PushSubscriptionRepository();
 
 export const repos = {
   books: bookRepo,
@@ -36,4 +38,5 @@ export const repos = {
   carts: cartRepo,
   favorites: favoriteRepo,
   discounts: discountRepo,
+  pushSubscriptions: pushSubscriptionRepo,
 };

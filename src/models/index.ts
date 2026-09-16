@@ -9,3 +9,4 @@ export { IssueReportModel } from '@models/IssueReportModel';
 export { CartModel } from '@models/CartModel';
 export { FavoriteModel } from '@models/FavoriteModel';
 export { DiscountModel } from '@models/DiscountModel';
+export { PushSubscriptionModel } from '@models/PushSubscriptionModel';

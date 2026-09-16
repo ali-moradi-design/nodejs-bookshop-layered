@@ -9,3 +9,4 @@ export { IssueReportRepository } from '@repositories/IssueReportRepository';
 export { CartRepository } from '@repositories/CartRepository';
 export { FavoriteRepository } from '@repositories/FavoriteRepository';
 export { DiscountRepository } from '@repositories/DiscountRepository';
+export { PushSubscriptionRepository } from '@repositories/PushSubscriptionRepository';

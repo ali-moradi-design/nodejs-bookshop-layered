@@ -11,6 +11,7 @@ import { DiscountService } from '@services/discount.service';
 import { CartService } from '@services/cart.service';
 import { FavoriteService } from '@services/favorite.service';
 import { DashboardService } from '@services/dashboard.service';
+import { PushService } from '@services/push.service';
 
 import {
   bookRepo,
@@ -24,6 +25,7 @@ import {
   cartRepo,
   favoriteRepo,
   discountRepo,
+  pushSubscriptionRepo,
 } from '@container/repos';
 import { tokenService, passwordHasher, unitOfWork, notifier } from '@container/infra';
 
@@ -52,3 +54,4 @@ export const authContextService = new AuthContextService(userRepo, roleRepo, tok
 export const cartService = new CartService(cartRepo, bookRepo, orderRepo, discountService);
 export const favoriteService = new FavoriteService(favoriteRepo, bookRepo);
 export const dashboardService = new DashboardService(userRepo, bookRepo, orderRepo, issueRepo);
+export const pushService = new PushService(pushSubscriptionRepo);

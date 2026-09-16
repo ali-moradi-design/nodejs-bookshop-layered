@@ -12,6 +12,7 @@ import favoritesRoutes from '@routes/favorites.routes';
 import discountsRoutes from '@routes/discounts.routes';
 import uploadsRoutes from '@routes/uploads.routes';
 import adminRoutes from '@routes/admin.routes';
+import pushRoutes from '@routes/push.routes';
 
 const v1 = Router();
 
@@ -28,5 +29,6 @@ v1.use('/favorites', favoritesRoutes);
 v1.use('/discounts', discountsRoutes);
 v1.use('/uploads', uploadsRoutes);
 v1.use('/admin', adminRoutes);
+v1.use('/push', pushRoutes);
 
 export default v1;
